@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useLanguage } from "../LanguageContext";
-// import API_URL from "../api";
+import API_URL from "../api";
 
 function Farmer() {
   const { t } = useLanguage();
@@ -8,7 +8,6 @@ function Farmer() {
   const [farmerName, setFarmerName] = useState("");
   const [crop, setCrop] = useState("");
   const [quantity, setQuantity] = useState("");
-
   const [farmLocation, setFarmLocation] = useState("");
   const [harvestDate, setHarvestDate] = useState("");
   const [qualityGrade, setQualityGrade] = useState("");
@@ -35,24 +34,21 @@ function Farmer() {
       setMessage("");
       setBatchId("");
 
-      const response = await fetch(
-        "http://localhost:5000/api/batches",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            farmerName: farmerName,
-            crop: crop,
-            quantity: Number(quantity),
-            unit: "kg",
-            farmLocation: farmLocation,
-            harvestDate: harvestDate,
-            qualityGrade: qualityGrade,
-          }),
-        }
-      );
+      const response = await fetch(`${API_URL}/api/batches`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          farmerName: farmerName,
+          crop: crop,
+          quantity: Number(quantity),
+          unit: "kg",
+          farmLocation: farmLocation,
+          harvestDate: harvestDate,
+          qualityGrade: qualityGrade,
+        }),
+      });
 
       const data = await response.json();
 
@@ -67,16 +63,12 @@ function Farmer() {
         setHarvestDate("");
         setQualityGrade("");
       } else {
-        setMessage(
-          data.message || t.somethingWrong
-        );
+        setMessage(data.message || t.somethingWrong);
       }
     } catch (error) {
-      console.error(error);
+      console.error("Backend Error:", error);
 
-      setMessage(
-        t.backendError
-      );
+      setMessage(t.backendError);
     } finally {
       setLoading(false);
     }
