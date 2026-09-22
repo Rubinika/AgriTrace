@@ -8,51 +8,55 @@ import CollectionCenter from "./pages/CollectionCenter";
 import About from "./pages/About";
 import Consumer from "./pages/Consumer";
 import Transport from "./pages/Transport";
+import Login from "./pages/Login";
+import { LanguageProvider } from "./LanguageContext";
+
 import "./App.css";
 
-
 function App() {
-
   return (
+    <LanguageProvider>
+      <BrowserRouter>
 
-    <BrowserRouter>
+        <Navbar />
 
-      <Navbar />
+        <Routes>
 
-      <Routes>
+          <Route
+            path="/"
+            element={<Home />}
+          />
 
-        <Route
-          path="/"
-          element={<Home />}
-        />
+          <Route
+            path="/farmer"
+            element={<Farmer />}
+          />
 
-        <Route
-          path="/farmer"
-          element={<Farmer />}
-        />
+          <Route
+            path="/collection"
+            element={<CollectionCenter />}
+          />
 
-        <Route
-          path="/collection"
-          element={<CollectionCenter />}
-        />
-        <Route
-          path="/consumer"
-          element={<Consumer />}
-        />
-        <Route
-          path="/transport"
-          element={<Transport />}
-        />
+          <Route
+            path="/consumer"
+            element={<Consumer />}
+          />
+          <Route path="/login" element={<Login />} />
 
-        <Route
-          path="/about"
-          element={<About />}
-        />
+          <Route
+            path="/transport"
+            element={<Transport />}
+          />
 
-      </Routes>
+          <Route
+            path="/about"
+            element={<About />}
+          />
 
-    </BrowserRouter>
+        </Routes>
 
+      </BrowserRouter>
+    </LanguageProvider>
   );
 }
 

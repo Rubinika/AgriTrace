@@ -1,26 +1,31 @@
+import { useLanguage } from "../LanguageContext";
+
 function About() {
+  const { t } = useLanguage();
+
   return (
     <div className="about-page">
 
-      {/* HERO */}
+      {/* =========================
+          HERO SECTION
+      ========================= */}
+
       <section className="about-hero">
 
         <div className="about-hero-content">
 
           <div className="about-badge">
-            🌾 ABOUT AGRITRACE
+            🌾 {t.aboutBadge}
           </div>
 
           <h1>
-            Building a <span>Transparent</span>
+            {t.buildingA} <span>{t.transparent}</span>
             <br />
-            Agricultural Future
+            {t.agriculturalFuture}
           </h1>
 
           <p>
-            AgriTrace is a blockchain-based agricultural supply
-            chain platform designed to make every stage of a
-            product journey transparent, secure and traceable.
+            {t.aboutHeroDescription}
           </p>
 
         </div>
@@ -32,7 +37,10 @@ function About() {
       </section>
 
 
-      {/* ABOUT INTRO */}
+      {/* =========================
+          ABOUT INTRO
+      ========================= */}
+
       <section className="about-intro">
 
         <div className="about-intro-card">
@@ -44,21 +52,17 @@ function About() {
           <div>
 
             <p className="about-label">
-              OUR MISSION
+              {t.ourMission}
             </p>
 
             <h2>
-              From Farm to Consumer,
+              {t.fromFarmConsumer}
               <br />
-              Every Step Matters
+              {t.everyStepMatters}
             </h2>
 
             <p className="about-text">
-              Agricultural products pass through several stages
-              before reaching consumers. AgriTrace records these
-              stages digitally so participants can verify where
-              a product came from, how it was handled and where
-              it is going.
+              {t.aboutMissionDescription}
             </p>
 
           </div>
@@ -68,21 +72,28 @@ function About() {
       </section>
 
 
-      {/* VALUES */}
+      {/* =========================
+          WHAT WE PROVIDE
+      ========================= */}
+
       <section className="about-values">
 
         <div className="about-section-heading">
 
-          <p>WHAT WE PROVIDE</p>
+          <p>
+            {t.whatWeProvide}
+          </p>
 
           <h2>
-            One Platform. Complete Transparency.
+            {t.onePlatformTransparency}
           </h2>
 
         </div>
 
 
         <div className="about-value-grid">
+
+          {/* CARD 1 */}
 
           <div className="about-value-card">
 
@@ -91,17 +102,17 @@ function About() {
             </div>
 
             <h3>
-              Blockchain Security
+              {t.blockchainSecurity}
             </h3>
 
             <p>
-              Supply chain information can be recorded
-              securely to improve data integrity and
-              transparency.
+              {t.aboutBlockchainDescription}
             </p>
 
           </div>
 
+
+          {/* CARD 2 */}
 
           <div className="about-value-card">
 
@@ -110,16 +121,17 @@ function About() {
             </div>
 
             <h3>
-              Product Tracking
+              {t.productTracking}
             </h3>
 
             <p>
-              Track an agricultural batch through every
-              stage from the farmer to the retailer.
+              {t.aboutTrackingDescription}
             </p>
 
           </div>
 
+
+          {/* CARD 3 */}
 
           <div className="about-value-card">
 
@@ -128,16 +140,17 @@ function About() {
             </div>
 
             <h3>
-              Farmer Participation
+              {t.farmerParticipation}
             </h3>
 
             <p>
-              Farmers can register their produce and
-              create a traceable digital batch.
+              {t.aboutFarmerDescription}
             </p>
 
           </div>
 
+
+          {/* CARD 4 */}
 
           <div className="about-value-card">
 
@@ -146,13 +159,11 @@ function About() {
             </div>
 
             <h3>
-              Consumer Transparency
+              {t.consumerTransparency}
             </h3>
 
             <p>
-              Consumers can access product information
-              and understand its journey through the
-              supply chain.
+              {t.aboutConsumerDescription}
             </p>
 
           </div>
@@ -162,21 +173,28 @@ function About() {
       </section>
 
 
-      {/* SUPPLY CHAIN */}
+      {/* =========================
+          AGRITRACE JOURNEY
+      ========================= */}
+
       <section className="about-journey">
 
         <div className="about-section-heading">
 
-          <p>THE AGRITRACE JOURNEY</p>
+          <p>
+            {t.agritraceJourney}
+          </p>
 
           <h2>
-            How Agricultural Products Move
+            {t.howProductsMove}
           </h2>
 
         </div>
 
 
         <div className="journey-container">
+
+          {/* FARMER */}
 
           <div className="journey-item">
 
@@ -188,10 +206,12 @@ function About() {
               👨‍🌾
             </div>
 
-            <h3>Farmer</h3>
+            <h3>
+              {t.farmer}
+            </h3>
 
             <p>
-              Produce registered
+              {t.produceRegistered}
             </p>
 
           </div>
@@ -201,6 +221,8 @@ function About() {
             →
           </div>
 
+
+          {/* COLLECTION */}
 
           <div className="journey-item">
 
@@ -212,10 +234,12 @@ function About() {
               📦
             </div>
 
-            <h3>Collection</h3>
+            <h3>
+              {t.collection}
+            </h3>
 
             <p>
-              Batch verified
+              {t.batchVerified}
             </p>
 
           </div>
@@ -225,6 +249,8 @@ function About() {
             →
           </div>
 
+
+          {/* TRANSPORT */}
 
           <div className="journey-item">
 
@@ -236,10 +262,12 @@ function About() {
               🚚
             </div>
 
-            <h3>Transport</h3>
+            <h3>
+              {t.transport}
+            </h3>
 
             <p>
-              Product moved
+              {t.productMoved}
             </p>
 
           </div>
@@ -249,6 +277,8 @@ function About() {
             →
           </div>
 
+
+          {/* WAREHOUSE */}
 
           <div className="journey-item">
 
@@ -260,10 +290,12 @@ function About() {
               🏭
             </div>
 
-            <h3>Warehouse</h3>
+            <h3>
+              {t.warehouse}
+            </h3>
 
             <p>
-              Product stored
+              {t.productStored}
             </p>
 
           </div>
@@ -273,6 +305,8 @@ function About() {
             →
           </div>
 
+
+          {/* RETAILER */}
 
           <div className="journey-item">
 
@@ -284,10 +318,12 @@ function About() {
               🏪
             </div>
 
-            <h3>Retailer</h3>
+            <h3>
+              {t.retailer}
+            </h3>
 
             <p>
-              Product delivered
+              {t.productDelivered}
             </p>
 
           </div>
@@ -297,7 +333,10 @@ function About() {
       </section>
 
 
-      {/* TECHNOLOGY */}
+      {/* =========================
+          TECHNOLOGY
+      ========================= */}
+
       <section className="technology-section">
 
         <div className="technology-card">
@@ -309,31 +348,37 @@ function About() {
           <div>
 
             <p className="about-label">
-              TECHNOLOGY
+              {t.technology}
             </p>
 
             <h2>
-              Powered by Modern Technology
+              {t.poweredByModernTechnology}
             </h2>
 
             <p>
-              AgriTrace combines a web application,
-              blockchain technology, QR-based tracking
-              and data management to create a transparent
-              agricultural supply chain.
+              {t.technologyDescription}
             </p>
 
           </div>
 
+
           <div className="technology-tags">
 
-            <span>⚛️ React</span>
+            <span>
+              ⚛️ {t.react}
+            </span>
 
-            <span>⛓️ Blockchain</span>
+            <span>
+              ⛓️ {t.blockchain}
+            </span>
 
-            <span>📱 QR Code</span>
+            <span>
+              📱 {t.qrCode}
+            </span>
 
-            <span>🗄️ Database</span>
+            <span>
+              🗄️ {t.database}
+            </span>
 
           </div>
 
@@ -342,16 +387,18 @@ function About() {
       </section>
 
 
-      {/* FINAL CTA */}
+      {/* =========================
+          FINAL CTA
+      ========================= */}
+
       <section className="about-cta">
 
         <h2>
-          🌱 Creating Trust From Farm to Consumer
+          🌱 {t.creatingTrust}
         </h2>
 
         <p>
-          Every batch tells a story. AgriTrace helps make
-          that story visible.
+          {t.everyBatchStory}
         </p>
 
       </section>

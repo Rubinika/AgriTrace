@@ -1,4 +1,8 @@
+import { useLanguage } from "../LanguageContext";
+
 function CollectionCenter() {
+  const { t } = useLanguage();
+
   return (
     <div className="collection-page">
 
@@ -7,16 +11,15 @@ function CollectionCenter() {
 
         <div>
           <div className="collection-badge">
-            📦 AGRITRACE • COLLECTION CENTER
+            📦 {t.collectionPortal}
           </div>
 
           <h1>
-            Receive & <span>Verify</span> Produce
+            {t.receiveAnd} <span>{t.verify}</span> {t.produce}
           </h1>
 
           <p>
-            Verify agricultural batches received from farmers
-            and record their quality and quantity.
+            {t.collectionDescription}
           </p>
         </div>
 
@@ -34,20 +37,21 @@ function CollectionCenter() {
         <div className="collection-info">
 
           <div className="collection-info-title">
+
             <div className="collection-info-icon">
               🔍
             </div>
 
-            <h2>Batch Verification</h2>
+            <h2>{t.batchVerification}</h2>
+
           </div>
 
           <p>
-            Every agricultural batch is verified at the
-            collection center before moving to the next
-            stage of the supply chain.
+            {t.batchVerificationDescription}
           </p>
 
 
+          {/* STEP 01 */}
           <div className="collection-step">
 
             <div className="collection-step-number">
@@ -55,16 +59,17 @@ function CollectionCenter() {
             </div>
 
             <div>
-              <h3>Identify Batch</h3>
+              <h3>{t.identifyBatch}</h3>
+
               <p>
-                Enter the unique batch ID received
-                from the farmer.
+                {t.identifyBatchDescription}
               </p>
             </div>
 
           </div>
 
 
+          {/* STEP 02 */}
           <div className="collection-step">
 
             <div className="collection-step-number">
@@ -72,16 +77,17 @@ function CollectionCenter() {
             </div>
 
             <div>
-              <h3>Check Quality</h3>
+              <h3>{t.checkQuality}</h3>
+
               <p>
-                Verify the quality grade and received
-                quantity of the produce.
+                {t.checkQualityDescription}
               </p>
             </div>
 
           </div>
 
 
+          {/* STEP 03 */}
           <div className="collection-step">
 
             <div className="collection-step-number">
@@ -89,10 +95,10 @@ function CollectionCenter() {
             </div>
 
             <div>
-              <h3>Confirm Receipt</h3>
+              <h3>{t.confirmReceipt}</h3>
+
               <p>
-                Record the verified batch in the
-                AgriTrace system.
+                {t.confirmReceiptDescription}
               </p>
             </div>
 
@@ -100,7 +106,7 @@ function CollectionCenter() {
 
 
           <div className="verified-box">
-            ✓ Secure batch verification
+            ✓ {t.secureBatchVerification}
           </div>
 
         </div>
@@ -116,9 +122,10 @@ function CollectionCenter() {
             </div>
 
             <div>
-              <h2>Batch Details</h2>
+              <h2>{t.batchDetails}</h2>
+
               <p>
-                Enter the received produce information
+                {t.receivedProduceInformation}
               </p>
             </div>
 
@@ -129,16 +136,16 @@ function CollectionCenter() {
           <div className="collection-input">
 
             <label>
-              🆔 Batch ID <span>*</span>
+              🆔 {t.batchId} <span>*</span>
             </label>
 
             <input
               type="text"
-              placeholder="e.g. AGR-TOM-001"
+              placeholder={t.batchIdPlaceholder}
             />
 
             <small>
-              Enter the batch ID provided by the farmer
+              {t.batchIdHelp}
             </small>
 
           </div>
@@ -148,14 +155,14 @@ function CollectionCenter() {
           <div className="collection-input">
 
             <label>
-              ⚖️ Received Quantity <span>*</span>
+              ⚖️ {t.receivedQuantity} <span>*</span>
             </label>
 
             <div className="collection-quantity">
 
               <input
                 type="number"
-                placeholder="e.g. 1000"
+                placeholder={t.receivedQuantityPlaceholder}
               />
 
               <span>KG</span>
@@ -169,25 +176,25 @@ function CollectionCenter() {
           <div className="collection-input">
 
             <label>
-              🏅 Quality Grade <span>*</span>
+              🏅 {t.qualityGrade} <span>*</span>
             </label>
 
             <select>
 
               <option value="">
-                Select Quality Grade
+                {t.selectQualityGrade}
               </option>
 
               <option>
-                Grade A - Premium
+                {t.gradeA}
               </option>
 
               <option>
-                Grade B - Good
+                {t.gradeB}
               </option>
 
               <option>
-                Grade C - Standard
+                {t.gradeC}
               </option>
 
             </select>
@@ -199,12 +206,12 @@ function CollectionCenter() {
           <div className="collection-input">
 
             <label>
-              📍 Collection Center <span>*</span>
+              📍 {t.collectionCenter} <span>*</span>
             </label>
 
             <input
               type="text"
-              placeholder="e.g. Krishnagiri Collection Center"
+              placeholder={t.collectionCenterPlaceholder}
             />
 
           </div>
@@ -212,17 +219,22 @@ function CollectionCenter() {
 
           {/* BUTTON */}
           <button className="confirm-button">
-            ✓ Confirm Batch Receipt
+
+            ✓ {t.confirmBatchReceipt}
+
             <span>→</span>
+
           </button>
 
 
           <div className="collection-security">
+
             🔒
+
             <span>
-              This verification record will be securely
-              stored in AgriTrace.
+              {t.collectionSecurity}
             </span>
+
           </div>
 
         </div>

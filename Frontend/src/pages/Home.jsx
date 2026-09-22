@@ -1,4 +1,8 @@
+import { useLanguage } from "../LanguageContext";
+
 function Home() {
+  const { t } = useLanguage();
+
   return (
     <div className="home-page">
 
@@ -8,35 +12,32 @@ function Home() {
         <div className="home-hero-content">
 
           <div className="home-badge">
-            🌾 BLOCKCHAIN-BASED AGRICULTURAL SUPPLY CHAIN
+            🌾 {t.homeBadge}
           </div>
 
           <h1>
-            From <span>Farm</span> to <span>Consumer</span>
+            {t.from} <span>{t.farm}</span> {t.to} <span>{t.consumer}</span>
             <br />
-            With Complete Transparency
+            {t.withCompleteTransparency}
           </h1>
 
           <p>
-            AgriTrace helps farmers, transporters, warehouses,
-            retailers and consumers track agricultural products
-            throughout the entire supply chain.
+            {t.homeDescription}
           </p>
 
           <div className="home-buttons">
 
             <button className="primary-home-btn">
-              🌱 Register Produce
+              🌱 {t.registerProduce}
             </button>
 
             <button className="secondary-home-btn">
-              📱 Track Product
+              📱 {t.trackProduct}
             </button>
 
           </div>
 
         </div>
-
 
         <div className="home-hero-visual">
 
@@ -48,7 +49,7 @@ function Home() {
             📦
             <div>
               <strong>125+</strong>
-              <small>Active Batches</small>
+              <small>{t.activeBatches}</small>
             </div>
           </div>
 
@@ -56,7 +57,7 @@ function Home() {
             🔗
             <div>
               <strong>100%</strong>
-              <small>Traceable</small>
+              <small>{t.traceable}</small>
             </div>
           </div>
 
@@ -76,7 +77,7 @@ function Home() {
 
           <div>
             <h2>35+</h2>
-            <p>Registered Farmers</p>
+            <p>{t.registeredFarmers}</p>
           </div>
 
         </div>
@@ -90,7 +91,7 @@ function Home() {
 
           <div>
             <h2>125+</h2>
-            <p>Total Batches</p>
+            <p>{t.totalBatches}</p>
           </div>
 
         </div>
@@ -104,7 +105,7 @@ function Home() {
 
           <div>
             <h2>42</h2>
-            <p>In Transit</p>
+            <p>{t.inTransit}</p>
           </div>
 
         </div>
@@ -118,7 +119,7 @@ function Home() {
 
           <div>
             <h2>68</h2>
-            <p>Verified Products</p>
+            <p>{t.verifiedProducts}</p>
           </div>
 
         </div>
@@ -131,15 +132,14 @@ function Home() {
 
         <div className="section-heading">
 
-          <p>HOW AGRITRACE WORKS</p>
+          <p>{t.howAgriTraceWorks}</p>
 
           <h2>
-            Complete Supply Chain Visibility
+            {t.completeSupplyChainVisibility}
           </h2>
 
           <span>
-            Every stage of your agricultural product is recorded
-            and traceable.
+            {t.supplyChainDescription}
           </span>
 
         </div>
@@ -153,10 +153,10 @@ function Home() {
               👨‍🌾
             </div>
 
-            <h3>Farmer</h3>
+            <h3>{t.farmer}</h3>
 
             <p>
-              Register produce
+              {t.registerProduce}
             </p>
 
           </div>
@@ -173,10 +173,10 @@ function Home() {
               📦
             </div>
 
-            <h3>Collection</h3>
+            <h3>{t.collection}</h3>
 
             <p>
-              Verify batch
+              {t.verifyBatch}
             </p>
 
           </div>
@@ -193,10 +193,10 @@ function Home() {
               🚚
             </div>
 
-            <h3>Transport</h3>
+            <h3>{t.transport}</h3>
 
             <p>
-              Track movement
+              {t.trackMovement}
             </p>
 
           </div>
@@ -213,10 +213,10 @@ function Home() {
               🏭
             </div>
 
-            <h3>Warehouse</h3>
+            <h3>{t.warehouse}</h3>
 
             <p>
-              Monitor storage
+              {t.monitorStorage}
             </p>
 
           </div>
@@ -233,10 +233,10 @@ function Home() {
               🏪
             </div>
 
-            <h3>Retailer</h3>
+            <h3>{t.retailer}</h3>
 
             <p>
-              Sell product
+              {t.sellProduct}
             </p>
 
           </div>
@@ -251,10 +251,10 @@ function Home() {
 
         <div className="section-heading">
 
-          <p>WHY AGRITRACE?</p>
+          <p>{t.whyAgriTrace}</p>
 
           <h2>
-            Building Trust in Agriculture
+            {t.buildingTrustInAgriculture}
           </h2>
 
         </div>
@@ -268,11 +268,10 @@ function Home() {
               🔗
             </div>
 
-            <h3>Blockchain Security</h3>
+            <h3>{t.blockchainSecurity}</h3>
 
             <p>
-              Supply chain records are securely stored
-              and protected from unauthorized changes.
+              {t.blockchainDescription}
             </p>
 
           </div>
@@ -284,11 +283,10 @@ function Home() {
               📱
             </div>
 
-            <h3>QR Code Tracking</h3>
+            <h3>{t.qrCodeTracking}</h3>
 
             <p>
-              Consumers can scan a QR code and view
-              the complete product journey.
+              {t.qrDescription}
             </p>
 
           </div>
@@ -300,11 +298,10 @@ function Home() {
               🌱
             </div>
 
-            <h3>Farmer Friendly</h3>
+            <h3>{t.farmerFriendly}</h3>
 
             <p>
-              Simple tools allow farmers to register
-              and manage their agricultural produce.
+              {t.farmerFriendlyDescription}
             </p>
 
           </div>
@@ -316,11 +313,10 @@ function Home() {
               📊
             </div>
 
-            <h3>Complete Transparency</h3>
+            <h3>{t.completeTransparency}</h3>
 
             <p>
-              Every participant can verify important
-              information at each supply chain stage.
+              {t.transparencyDescription}
             </p>
 
           </div>
@@ -336,17 +332,17 @@ function Home() {
         <div>
 
           <h2>
-            Make Every Product Traceable
+            {t.makeEveryProductTraceable}
           </h2>
 
           <p>
-            From the farmer's field to the consumer's hands.
+            {t.fromFarmerToConsumer}
           </p>
 
         </div>
 
         <button>
-          🚀 Get Started
+          🚀 {t.getStarted}
         </button>
 
       </section>

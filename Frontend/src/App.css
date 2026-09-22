@@ -2400,3 +2400,574 @@ select {
   }
 
 }
+/* =========================================
+   AGRITRACE ATTRACTIVE LOGIN PAGE
+========================================= */
+
+.at-login-page {
+  min-height: calc(100vh - 70px);
+  background: #eef7ed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 45px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background */
+
+.at-circle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.at-circle-one {
+  width: 500px;
+  height: 500px;
+  background: #d7eed5;
+  top: -250px;
+  left: -200px;
+}
+
+.at-circle-two {
+  width: 450px;
+  height: 450px;
+  background: #dcefd5;
+  bottom: -250px;
+  right: -180px;
+}
+
+.at-leaf {
+  position: absolute;
+  font-size: 45px;
+  opacity: 0.25;
+}
+
+.leaf-one {
+  top: 100px;
+  right: 70px;
+  transform: rotate(25deg);
+}
+
+.leaf-two {
+  bottom: 70px;
+  left: 50px;
+  transform: rotate(-20deg);
+}
+
+/* Main */
+
+.at-login-wrapper {
+  width: 1100px;
+  max-width: 100%;
+  min-height: 650px;
+  background: white;
+  border-radius: 28px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  box-shadow: 0 25px 70px rgba(36, 91, 42, 0.18);
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================
+   LEFT VISUAL
+========================================= */
+
+.at-login-visual {
+  background: linear-gradient(
+    145deg,
+    #14532d,
+    #218c4b 55%,
+    #49a942
+  );
+  color: white;
+  position: relative;
+  padding: 42px;
+  overflow: hidden;
+}
+
+.at-brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  position: relative;
+  z-index: 5;
+}
+
+.at-brand-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.17);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+}
+
+.at-brand h2 {
+  margin: 0;
+  font-size: 21px;
+  letter-spacing: 0.5px;
+}
+
+.at-brand p {
+  margin: 2px 0 0;
+  font-size: 10px;
+  opacity: 0.7;
+  letter-spacing: 1px;
+}
+
+/* Content */
+
+.at-visual-content {
+  position: relative;
+  z-index: 5;
+  margin-top: 75px;
+}
+
+.at-small-badge {
+  display: inline-block;
+  padding: 8px 14px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+.at-visual-content h1 {
+  font-size: 47px;
+  line-height: 1.08;
+  margin: 20px 0 15px;
+  font-weight: 700;
+}
+
+.at-visual-content h1 span {
+  color: #d8f99d;
+}
+
+.at-visual-content > p {
+  max-width: 450px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.at-stat-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.at-stat {
+  min-width: 90px;
+  padding: 12px 15px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(5px);
+}
+
+.at-stat strong {
+  display: block;
+  font-size: 18px;
+  color: #e4f9bb;
+}
+
+.at-stat span {
+  display: block;
+  margin-top: 3px;
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+/* Farm */
+
+.at-farm {
+  position: absolute;
+  height: 190px;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}
+
+.at-sun {
+  position: absolute;
+  right: 80px;
+  top: 10px;
+  font-size: 40px;
+}
+
+.at-cloud {
+  position: absolute;
+  opacity: 0.35;
+  font-size: 25px;
+}
+
+.cloud-one {
+  left: 60px;
+  top: 20px;
+}
+
+.cloud-two {
+  left: 210px;
+  top: 55px;
+}
+
+.at-mountain {
+  position: absolute;
+  bottom: 40px;
+  width: 0;
+  height: 0;
+  border-left: 110px solid transparent;
+  border-right: 110px solid transparent;
+  border-bottom: 130px solid rgba(255, 255, 255, 0.12);
+}
+
+.mountain-one {
+  left: -30px;
+}
+
+.mountain-two {
+  left: 130px;
+  border-left-width: 140px;
+  border-right-width: 140px;
+  border-bottom-width: 150px;
+}
+
+.at-field {
+  position: absolute;
+  bottom: -60px;
+  width: 120%;
+  left: -10%;
+  height: 130px;
+  border-radius: 50% 50% 0 0;
+}
+
+.field-one {
+  background: #28763a;
+}
+
+.field-two {
+  background: #1d6632;
+  bottom: -100px;
+}
+
+.at-crop {
+  position: absolute;
+  bottom: 35px;
+  font-size: 30px;
+  z-index: 4;
+}
+
+.crop-one {
+  left: 18%;
+}
+
+.crop-two {
+  left: 35%;
+  bottom: 48px;
+}
+
+.crop-three {
+  right: 18%;
+  bottom: 38px;
+}
+
+.at-farmer {
+  position: absolute;
+  bottom: 45px;
+  right: 42%;
+  font-size: 40px;
+  z-index: 5;
+}
+
+/* =========================================
+   RIGHT LOGIN FORM
+========================================= */
+
+.at-login-form {
+  padding: 60px 55px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.at-form-top {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.at-lock-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 15px;
+  background: #eaf7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.at-form-top span {
+  color: #3b9a50;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.at-form-top h2 {
+  margin: 3px 0 0;
+  font-size: 30px;
+  color: #183d23;
+}
+
+.at-form-description {
+  color: #8a938c;
+  font-size: 13px;
+  margin: 12px 0 32px;
+}
+
+/* Fields */
+
+.at-field {
+  margin-bottom: 20px;
+}
+
+.at-field label {
+  display: block;
+  margin-bottom: 8px;
+  color: #304136;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.at-input {
+  height: 52px;
+  border: 1px solid #dfe7df;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  background: #fbfdfb;
+  transition: 0.2s;
+}
+
+.at-input:focus-within {
+  border-color: #3b9a50;
+  box-shadow: 0 0 0 4px rgba(59, 154, 80, 0.08);
+  background: white;
+}
+
+.at-input > span {
+  font-size: 16px;
+  margin-right: 11px;
+}
+
+.at-input input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 13px;
+  color: #25352a;
+}
+
+.at-input input::placeholder {
+  color: #adb5ae;
+}
+
+.at-eye {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+/* Options */
+
+.at-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0 25px;
+}
+
+.at-options label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  color: #737c75;
+}
+
+.at-options input {
+  accent-color: #31934b;
+}
+
+.at-forgot {
+  border: none;
+  background: none;
+  color: #2d9147;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Button */
+
+.at-login-button {
+  width: 100%;
+  height: 53px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(
+    90deg,
+    #207c3d,
+    #3ca64f
+  );
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 8px 20px rgba(45, 137, 64, 0.22);
+  transition: 0.25s;
+}
+
+.at-login-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(45, 137, 64, 0.3);
+}
+
+.at-arrow {
+  font-size: 20px;
+}
+
+/* Divider */
+
+.at-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #b2bab4;
+  font-size: 9px;
+  margin: 25px 0;
+}
+
+.at-divider::before,
+.at-divider::after {
+  content: "";
+  height: 1px;
+  background: #edf0ed;
+  flex: 1;
+}
+
+/* Register */
+
+.at-register {
+  text-align: center;
+  font-size: 11px;
+  color: #8b938d;
+}
+
+.at-register button {
+  border: none;
+  background: none;
+  color: #278841;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+/* Security */
+
+.at-security {
+  margin-top: 28px;
+  background: #f5faf5;
+  border: 1px solid #e4efe4;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.at-security > span {
+  font-size: 18px;
+}
+
+.at-security strong {
+  font-size: 10px;
+  color: #3c6043;
+}
+
+.at-security p {
+  margin: 3px 0 0;
+  font-size: 9px;
+  color: #8b948d;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+  .at-login-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .at-login-visual {
+    min-height: 500px;
+  }
+
+  .at-login-form {
+    padding: 45px 35px;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .at-login-page {
+    padding: 20px;
+  }
+
+  .at-login-visual {
+    padding: 30px;
+    min-height: 450px;
+  }
+
+  .at-visual-content {
+    margin-top: 50px;
+  }
+
+  .at-visual-content h1 {
+    font-size: 36px;
+  }
+
+  .at-login-form {
+    padding: 35px 25px;
+  }
+
+  .at-stat-row {
+    gap: 7px;
+  }
+
+  .at-stat {
+    min-width: 70px;
+    padding: 10px;
+  }
+
+}

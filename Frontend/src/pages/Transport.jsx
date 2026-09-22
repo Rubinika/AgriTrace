@@ -1,7 +1,8 @@
-
 import { useState } from "react";
+import { useLanguage } from "../LanguageContext";
 
 function Transport() {
+  const { t } = useLanguage();
 
   const [batchId, setBatchId] = useState("");
   const [source, setSource] = useState("");
@@ -11,47 +12,44 @@ function Transport() {
   const [transportDate, setTransportDate] = useState("");
   const [showStatus, setShowStatus] = useState(false);
 
-
   const startTransport = () => {
-
     if (
       batchId === "" ||
       source === "" ||
       destination === "" ||
       vehicleNumber === ""
     ) {
-      alert("Please fill all required fields");
+      alert(t.fillRequired);
       return;
     }
 
     setShowStatus(true);
   };
 
-
   return (
     <div className="transport-page">
 
-      {/* HERO SECTION */}
+      {/* =====================================================
+          HERO SECTION
+      ===================================================== */}
 
       <section className="transport-hero">
 
         <div className="transport-hero-content">
 
           <div className="transport-badge">
-            🚚 AGRITRACE • TRANSPORT PORTAL
+            🚚 {t.transportPortal}
           </div>
 
           <h1>
-            Track <span>Product</span> Transportation
+            {t.track} <span>{t.product}</span> {t.transportation}
           </h1>
 
           <p>
-            Record transportation details and track agricultural
-            products as they move from one stage to another.
+            {t.transportDescription}
           </p>
 
         </div>
-
 
         <div className="transport-hero-icon">
           🚚
@@ -60,12 +58,15 @@ function Transport() {
       </section>
 
 
-      {/* MAIN SECTION */}
+      {/* =====================================================
+          MAIN SECTION
+      ===================================================== */}
 
       <section className="transport-main">
 
-
-        {/* INFORMATION CARD */}
+        {/* =====================================================
+            INFORMATION CARD
+        ===================================================== */}
 
         <div className="transport-info-card">
 
@@ -76,18 +77,17 @@ function Transport() {
             </div>
 
             <h2>
-              Transportation Tracking
+              {t.transportTracking}
             </h2>
 
           </div>
 
-
           <p>
-            Transportation records help maintain visibility
-            of the agricultural product while it is moving
-            through the supply chain.
+            {t.transportTrackingDescription}
           </p>
 
+
+          {/* STEP 01 */}
 
           <div className="transport-step">
 
@@ -97,16 +97,18 @@ function Transport() {
 
             <div>
               <h3>
-                Identify Batch
+                {t.identifyBatch}
               </h3>
 
               <p>
-                Enter the batch ID of the product being transported.
+                {t.identifyBatchTransportDescription}
               </p>
             </div>
 
           </div>
 
+
+          {/* STEP 02 */}
 
           <div className="transport-step">
 
@@ -116,16 +118,18 @@ function Transport() {
 
             <div>
               <h3>
-                Enter Route
+                {t.enterRoute}
               </h3>
 
               <p>
-                Record the source and destination locations.
+                {t.enterRouteDescription}
               </p>
             </div>
 
           </div>
 
+
+          {/* STEP 03 */}
 
           <div className="transport-step">
 
@@ -135,11 +139,11 @@ function Transport() {
 
             <div>
               <h3>
-                Start Transportation
+                {t.startTransportation}
               </h3>
 
               <p>
-                Save the transportation record in AgriTrace.
+                {t.startTransportationDescription}
               </p>
             </div>
 
@@ -147,13 +151,15 @@ function Transport() {
 
 
           <div className="transport-secure-box">
-            🔗 Transportation record will be traceable
+            🔗 {t.transportTraceable}
           </div>
 
         </div>
 
 
-        {/* FORM CARD */}
+        {/* =====================================================
+            FORM CARD
+        ===================================================== */}
 
         <div className="transport-form-card">
 
@@ -166,11 +172,11 @@ function Transport() {
             <div>
 
               <h2>
-                Transportation Details
+                {t.transportDetails}
               </h2>
 
               <p>
-                Enter the vehicle and route information
+                {t.transportDetailsDescription}
               </p>
 
             </div>
@@ -178,39 +184,43 @@ function Transport() {
           </div>
 
 
-          {/* BATCH ID */}
+          {/* =================================================
+              BATCH ID
+          ================================================= */}
 
           <div className="transport-input">
 
             <label>
-              🆔 Batch ID <span>*</span>
+              🆔 {t.batchId} <span>*</span>
             </label>
 
             <input
               type="text"
               value={batchId}
               onChange={(e) => setBatchId(e.target.value)}
-              placeholder="e.g. AGR-TOM-001"
+              placeholder={t.transportBatchPlaceholder}
             />
 
           </div>
 
 
-          {/* SOURCE + DESTINATION */}
+          {/* =================================================
+              SOURCE + DESTINATION
+          ================================================= */}
 
           <div className="transport-input-row">
 
             <div className="transport-input">
 
               <label>
-                📍 Source <span>*</span>
+                📍 {t.source} <span>*</span>
               </label>
 
               <input
                 type="text"
                 value={source}
                 onChange={(e) => setSource(e.target.value)}
-                placeholder="e.g. Krishnagiri"
+                placeholder={t.sourcePlaceholder}
               />
 
             </div>
@@ -219,14 +229,14 @@ function Transport() {
             <div className="transport-input">
 
               <label>
-                📍 Destination <span>*</span>
+                📍 {t.destination} <span>*</span>
               </label>
 
               <input
                 type="text"
                 value={destination}
                 onChange={(e) => setDestination(e.target.value)}
-                placeholder="e.g. Chennai"
+                placeholder={t.destinationPlaceholder}
               />
 
             </div>
@@ -234,21 +244,23 @@ function Transport() {
           </div>
 
 
-          {/* VEHICLE + DRIVER */}
+          {/* =================================================
+              VEHICLE + DRIVER
+          ================================================= */}
 
           <div className="transport-input-row">
 
             <div className="transport-input">
 
               <label>
-                🚛 Vehicle Number <span>*</span>
+                🚛 {t.vehicleNumber} <span>*</span>
               </label>
 
               <input
                 type="text"
                 value={vehicleNumber}
                 onChange={(e) => setVehicleNumber(e.target.value)}
-                placeholder="e.g. TN 01 AB 1234"
+                placeholder={t.vehiclePlaceholder}
               />
 
             </div>
@@ -257,14 +269,14 @@ function Transport() {
             <div className="transport-input">
 
               <label>
-                👨‍✈️ Driver Name
+                👨‍✈️ {t.driverName}
               </label>
 
               <input
                 type="text"
                 value={driverName}
                 onChange={(e) => setDriverName(e.target.value)}
-                placeholder="Enter driver name"
+                placeholder={t.driverPlaceholder}
               />
 
             </div>
@@ -272,12 +284,14 @@ function Transport() {
           </div>
 
 
-          {/* DATE */}
+          {/* =================================================
+              DATE
+          ================================================= */}
 
           <div className="transport-input">
 
             <label>
-              📅 Transportation Date
+              📅 {t.transportDate}
             </label>
 
             <input
@@ -289,30 +303,37 @@ function Transport() {
           </div>
 
 
-          {/* BUTTON */}
+          {/* =================================================
+              BUTTON
+          ================================================= */}
 
           <button
             className="transport-button"
             onClick={startTransport}
           >
-            🚚 Start Transportation
+            🚚 {t.startTransport}
             <span>→</span>
           </button>
 
+
+          {/* =================================================
+              SECURITY MESSAGE
+          ================================================= */}
 
           <div className="transport-security">
 
             🔒
 
             <span>
-              Transportation information is securely recorded
-              in the AgriTrace system.
+              {t.transportSecurity}
             </span>
 
           </div>
 
 
-          {/* SUCCESS */}
+          {/* =================================================
+              SUCCESS MESSAGE
+          ================================================= */}
 
           {showStatus && (
 
@@ -325,13 +346,15 @@ function Transport() {
               <div>
 
                 <h3>
-                  Transportation Started
+                  {t.transportStarted}
                 </h3>
 
                 <p>
-                  Batch <strong>{batchId}</strong> is now moving
-                  from <strong>{source}</strong> to
-                  <strong> {destination}</strong>.
+                  {t.batch} <strong>{batchId}</strong>{" "}
+                  {t.movingFrom}{" "}
+                  <strong>{source}</strong>{" "}
+                  {t.toText}{" "}
+                  <strong>{destination}</strong>.
                 </p>
 
               </div>
@@ -345,7 +368,9 @@ function Transport() {
       </section>
 
 
-      {/* STATUS SECTION */}
+      {/* =====================================================
+          STATUS SECTION
+      ===================================================== */}
 
       {showStatus && (
 
@@ -354,17 +379,21 @@ function Transport() {
           <div className="status-heading">
 
             <p>
-              LIVE TRANSPORT STATUS
+              {t.liveTransportStatus}
             </p>
 
             <h2>
-              🚚 Batch In Transit
+              🚚 {t.batchInTransit}
             </h2>
 
           </div>
 
 
+          {/* ROUTE */}
+
           <div className="transport-route">
+
+            {/* SOURCE */}
 
             <div className="route-location">
 
@@ -377,11 +406,13 @@ function Transport() {
               </h3>
 
               <p>
-                Source
+                {t.source}
               </p>
 
             </div>
 
+
+            {/* ROUTE LINE */}
 
             <div className="route-line">
 
@@ -394,6 +425,8 @@ function Transport() {
             </div>
 
 
+            {/* DESTINATION */}
+
             <div className="route-location">
 
               <div className="route-icon">
@@ -405,7 +438,7 @@ function Transport() {
               </h3>
 
               <p>
-                Destination
+                {t.destination}
               </p>
 
             </div>

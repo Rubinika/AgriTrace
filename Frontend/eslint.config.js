@@ -21,3 +21,4 @@ export default defineConfig([
     },
   },
 ])
+Remove-Item -Recurse -Force "node_modules\.vite" -ErrorAction SilentlyContinue

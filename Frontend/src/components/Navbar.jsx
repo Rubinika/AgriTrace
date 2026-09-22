@@ -1,53 +1,49 @@
 import { Link } from "react-router-dom";
+import { useLanguage } from "../LanguageContext";
 import "./Navbar.css";
 
 function Navbar() {
-    return (
-        <nav className="navbar">
+  const { language, setLanguage, t } = useLanguage();
 
-            <div className="navbar-logo">
-                🌾 <span>AgriTrace</span>
-            </div>
+  return (
+    <nav className="navbar">
 
-            <div className="navbar-links">
+      <div className="navbar-logo">
+        🌾 <span>{t.title}</span>
+      </div>
 
-                <Link to="/">
-                    Home
-                </Link>
+      <div className="navbar-links">
+        <Link to="/">{t.home}</Link>
+        <Link to="/farmer">{t.farmer}</Link>
+        <Link to="/collection">{t.collection}</Link>
+        <Link to="/transport">{t.transport}</Link>
+        <Link to="/consumer">{t.consumer}</Link>
+        <Link to="/about">{t.about}</Link>
+      </div>
 
-                <Link to="/farmer">
-                    Farmer
-                </Link>
+      <div className="navbar-right">
 
-                <Link to="/collection">
-                    Collection
-                </Link>
-                <Link to="/consumer">
-                    Consumer
-                </Link>
-                <Link to="/transport">Transport</Link>
+        <select
+          value={language}
+          onChange={(e) => setLanguage(e.target.value)}
+          className="language-select"
+        >
+          <option value="en">English</option>
+          <option value="ta">தமிழ்</option>
+        </select>
 
-                <Link to="/about">
-                    About
-                </Link>
+        <Link to="/login" className="login-button">
+          {t.login}
+        </Link>
 
+        <div className="admin">
+          👤 {t.admin}
+        </div>
 
-            </div>
+      </div>
 
-            <div className="navbar-right">
-
-                <button className="login-button">
-                    Login
-                </button>
-
-                <div className="admin">
-                    👤 Admin
-                </div>
-
-            </div>
-
-        </nav>
-    );
+    </nav>
+  );
 }
 
 export default Navbar;

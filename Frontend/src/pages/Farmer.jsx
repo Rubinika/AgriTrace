@@ -1,6 +1,10 @@
 import { useState } from "react";
+import { useLanguage } from "../LanguageContext";
+// import API_URL from "../api";
 
 function Farmer() {
+  const { t } = useLanguage();
+
   const [farmerName, setFarmerName] = useState("");
   const [crop, setCrop] = useState("");
   const [quantity, setQuantity] = useState("");
@@ -22,7 +26,7 @@ function Farmer() {
       !harvestDate ||
       !qualityGrade
     ) {
-      setMessage("Please fill all required fields.");
+      setMessage(t.fillRequired);
       return;
     }
 
@@ -64,14 +68,14 @@ function Farmer() {
         setQualityGrade("");
       } else {
         setMessage(
-          data.message || "Something went wrong."
+          data.message || t.somethingWrong
         );
       }
     } catch (error) {
       console.error(error);
 
       setMessage(
-        "Unable to connect to the backend. Make sure the backend is running."
+        t.backendError
       );
     } finally {
       setLoading(false);
@@ -87,16 +91,15 @@ function Farmer() {
         <div className="hero-content">
 
           <div className="hero-badge">
-            🌿 AGRITRACE • FARMER PORTAL
+            🌿 {t.farmerPortal}
           </div>
 
           <h1>
-            Register Your <span>Produce</span>
+            {t.registerYour} <span>{t.produce}</span>
           </h1>
 
           <p>
-            Add your agricultural produce and create a
-            traceable supply chain batch.
+            {t.farmerDescription}
           </p>
 
         </div>
@@ -120,13 +123,12 @@ function Farmer() {
               🌱
             </div>
 
-            <h2>Why Register?</h2>
+            <h2>{t.whyRegister}</h2>
 
           </div>
 
           <p className="why-description">
-            Registering your produce creates a unique batch
-            that can be tracked throughout the supply chain.
+            {t.registerDescription}
           </p>
 
 
@@ -138,11 +140,10 @@ function Farmer() {
             </div>
 
             <div>
-              <h3>Traceable</h3>
+              <h3>{t.traceableTitle}</h3>
 
               <p>
-                Track your product journey
-                from farm to consumer.
+                {t.traceableDescription}
               </p>
             </div>
 
@@ -157,11 +158,10 @@ function Farmer() {
             </div>
 
             <div>
-              <h3>Secure</h3>
+              <h3>{t.secureTitle}</h3>
 
               <p>
-                Protected supply chain
-                records using blockchain.
+                {t.secureDescription}
               </p>
             </div>
 
@@ -176,11 +176,10 @@ function Farmer() {
             </div>
 
             <div>
-              <h3>Easy Tracking</h3>
+              <h3>{t.easyTracking}</h3>
 
               <p>
-                Generate a unique batch ID
-                for your produce.
+                {t.easyTrackingDescription}
               </p>
             </div>
 
@@ -188,7 +187,7 @@ function Farmer() {
 
 
           <div className="farm-message">
-            🌾 From Farm to Future
+            🌾 {t.fromFarmToFuture}
           </div>
 
         </div>
@@ -204,8 +203,8 @@ function Farmer() {
             </div>
 
             <div>
-              <h2>Produce Details</h2>
-              <p>Enter your crop information</p>
+              <h2>{t.produceDetails}</h2>
+              <p>{t.enterCropInformation}</p>
             </div>
 
           </div>
@@ -215,12 +214,12 @@ function Farmer() {
           <div className="input-group">
 
             <label>
-              👨‍🌾 Farmer Name <span>*</span>
+              👨‍🌾 {t.farmerName} <span>*</span>
             </label>
 
             <input
               type="text"
-              placeholder="e.g. Ravi"
+              placeholder={t.farmerNamePlaceholder}
               value={farmerName}
               onChange={(e) =>
                 setFarmerName(e.target.value)
@@ -236,12 +235,12 @@ function Farmer() {
             <div className="input-group">
 
               <label>
-                🌱 Product Name <span>*</span>
+                🌱 {t.productName} <span>*</span>
               </label>
 
               <input
                 type="text"
-                placeholder="e.g. Tomato"
+                placeholder={t.productPlaceholder}
                 value={crop}
                 onChange={(e) =>
                   setCrop(e.target.value)
@@ -254,14 +253,14 @@ function Farmer() {
             <div className="input-group">
 
               <label>
-                ⚖️ Quantity (KG) <span>*</span>
+                ⚖️ {t.quantityKg} <span>*</span>
               </label>
 
               <div className="quantity-input">
 
                 <input
                   type="number"
-                  placeholder="e.g. 1000"
+                  placeholder={t.quantityPlaceholder}
                   value={quantity}
                   onChange={(e) =>
                     setQuantity(e.target.value)
@@ -281,12 +280,12 @@ function Farmer() {
           <div className="input-group">
 
             <label>
-              📍 Farm Location <span>*</span>
+              📍 {t.farmLocation} <span>*</span>
             </label>
 
             <input
               type="text"
-              placeholder="e.g. Krishnagiri, Tamil Nadu"
+              placeholder={t.locationPlaceholder}
               value={farmLocation}
               onChange={(e) =>
                 setFarmLocation(e.target.value)
@@ -302,7 +301,7 @@ function Farmer() {
             <div className="input-group">
 
               <label>
-                📅 Harvest Date <span>*</span>
+                📅 {t.harvestDate} <span>*</span>
               </label>
 
               <input
@@ -319,7 +318,7 @@ function Farmer() {
             <div className="input-group">
 
               <label>
-                🏅 Quality Grade <span>*</span>
+                🏅 {t.qualityGrade} <span>*</span>
               </label>
 
               <select
@@ -330,19 +329,19 @@ function Farmer() {
               >
 
                 <option value="">
-                  Select Grade
+                  {t.selectGrade}
                 </option>
 
                 <option value="Grade A - Premium">
-                  Grade A - Premium
+                  {t.gradeA}
                 </option>
 
                 <option value="Grade B - Good">
-                  Grade B - Good
+                  {t.gradeB}
                 </option>
 
                 <option value="Grade C - Standard">
-                  Grade C - Standard
+                  {t.gradeC}
                 </option>
 
               </select>
@@ -360,8 +359,8 @@ function Farmer() {
           >
 
             {loading
-              ? "Registering..."
-              : "🌿 Register Produce"}
+              ? t.registering
+              : `🌿 ${t.registerProduce}`}
 
             <span>→</span>
 
@@ -393,7 +392,7 @@ function Farmer() {
             >
 
               <h3>
-                🌾 Batch Created Successfully
+                🌾 {t.batchCreated}
               </h3>
 
               <p
@@ -408,7 +407,7 @@ function Farmer() {
               </p>
 
               <p>
-                Save this Batch ID to track your produce.
+                {t.saveBatchId}
               </p>
 
             </div>
@@ -421,8 +420,7 @@ function Farmer() {
             🔒
 
             <span>
-              Your information is securely recorded in
-              the AgriTrace system.
+              {t.secureInformation}
             </span>
 
           </div>
