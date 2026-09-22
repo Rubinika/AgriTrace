@@ -2971,3 +2971,324 @@ select {
   }
 
 }
+/* ============================= */
+/* MOBILE RESPONSIVE DESIGN      */
+/* ============================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* ---------- NAVBAR ---------- */
+
+@media (max-width: 768px) {
+
+  .navbar {
+    width: 100%;
+    min-height: auto;
+    height: auto;
+    padding: 12px 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .navbar-logo {
+    width: 100%;
+    justify-content: center;
+    font-size: 20px;
+  }
+
+  .navbar-links {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 5px;
+  }
+
+  .navbar-links a {
+    font-size: 12px;
+    padding: 7px 9px;
+    flex-shrink: 0;
+  }
+
+  .navbar-right {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .language-select {
+    font-size: 12px;
+    padding: 7px 8px;
+  }
+
+  .login-button {
+    font-size: 12px;
+    padding: 7px 12px;
+  }
+
+  .admin {
+    display: none;
+  }
+}
+
+
+/* ---------- GENERAL ---------- */
+
+@media (max-width: 768px) {
+
+  .container,
+  .page-container,
+  .home-container,
+  .content-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px 15px;
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 19px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  button {
+    max-width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+
+/* ---------- FARMER PAGE ---------- */
+
+@media (max-width: 768px) {
+
+  .farmer-container {
+    width: 100%;
+    padding: 20px 15px;
+  }
+
+  .farmer-form {
+    width: 100%;
+  }
+
+  .farmer-form input,
+  .farmer-form select,
+  .farmer-form textarea {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+
+/* ---------- COLLECTION CENTER ---------- */
+
+@media (max-width: 768px) {
+
+  .collection-container {
+    width: 100%;
+    padding: 20px 15px;
+  }
+
+  .collection-form {
+    width: 100%;
+  }
+
+  .collection-form input,
+  .collection-form select,
+  .collection-form textarea {
+    width: 100%;
+  }
+
+  .collection-row {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+
+/* ---------- TRANSPORT ---------- */
+
+@media (max-width: 768px) {
+
+  .transport-container {
+    width: 100%;
+    padding: 20px 15px;
+  }
+
+  .transport-form {
+    width: 100%;
+  }
+
+  .transport-form input,
+  .transport-form select {
+    width: 100%;
+  }
+}
+
+
+/* ---------- CONSUMER ---------- */
+
+@media (max-width: 768px) {
+
+  .consumer-container {
+    width: 100%;
+    padding: 20px 15px;
+  }
+
+  .consumer-card {
+    width: 100%;
+    margin: 0;
+  }
+
+  .timeline {
+    width: 100%;
+  }
+
+  .timeline-item {
+    width: 100%;
+  }
+}
+
+
+/* ---------- LOGIN ---------- */
+
+@media (max-width: 768px) {
+
+  .login-page {
+    width: 100%;
+    min-height: auto;
+    padding: 10px;
+  }
+
+  .login-left {
+    width: 100%;
+    min-height: 400px;
+    border-radius: 20px 20px 0 0;
+    padding: 25px;
+  }
+
+  .login-right {
+    width: 100%;
+    min-height: auto;
+    border-radius: 0 0 20px 20px;
+    padding: 25px 20px;
+  }
+
+  .login-form-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .login-left-content {
+    margin-top: 40px;
+  }
+
+  .login-left-content h1 {
+    font-size: 34px;
+  }
+
+  .login-stats {
+    width: 100%;
+    display: flex;
+    gap: 6px;
+  }
+
+  .login-stats div {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+
+/* ---------- SMALL PHONES ---------- */
+
+@media (max-width: 480px) {
+
+  .navbar {
+    padding: 10px;
+  }
+
+  .navbar-links {
+    gap: 5px;
+  }
+
+  .navbar-links a {
+    font-size: 11px;
+    padding: 6px 7px;
+  }
+
+  .navbar-right {
+    gap: 5px;
+  }
+
+  .login-left {
+    padding: 20px;
+  }
+
+  .login-left-content h1 {
+    font-size: 30px;
+  }
+
+  .login-left-content > p {
+    font-size: 13px;
+  }
+
+  .login-stats {
+    gap: 4px;
+  }
+
+  .login-stats div {
+    padding: 8px 5px;
+  }
+
+  .login-stats strong {
+    font-size: 15px;
+  }
+
+  .login-stats span {
+    font-size: 8px;
+  }
+
+  .login-right {
+    padding: 25px 15px;
+  }
+}
