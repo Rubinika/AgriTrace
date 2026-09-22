@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLanguage } from "../LanguageContext";
 import API_URL from "../api";
+import { QRCodeSVG } from "qrcode.react";
 
 function Farmer() {
   const { t } = useLanguage();
@@ -67,7 +68,6 @@ function Farmer() {
       }
     } catch (error) {
       console.error("Backend Error:", error);
-
       setMessage(t.backendError);
     } finally {
       setLoading(false);
@@ -371,7 +371,7 @@ function Farmer() {
           )}
 
 
-          {/* BATCH ID */}
+          {/* BATCH ID + QR CODE */}
           {batchId && (
             <div
               style={{
@@ -401,6 +401,37 @@ function Farmer() {
               <p>
                 {t.saveBatchId}
               </p>
+
+
+              {/* QR CODE */}
+              <div
+                style={{
+                  marginTop: "20px",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: "10px",
+                }}
+              >
+
+                <QRCodeSVG
+                  value={`${window.location.origin}/consumer?batchId=${batchId}`}
+                  size={180}
+                  level="H"
+                  includeMargin={true}
+                />
+
+                <p
+                  style={{
+                    margin: "5px 0 0",
+                    fontWeight: "bold",
+                    color: "#2e7d32",
+                  }}
+                >
+                  Scan QR to Track This Batch
+                </p>
+
+              </div>
 
             </div>
           )}

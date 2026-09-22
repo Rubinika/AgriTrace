@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { QRCodeCanvas } from "qrcode.react";
 import { useLanguage } from "../LanguageContext";
+import API_URL from "../api";
 
 function Consumer() {
   const { t } = useLanguage();
@@ -11,19 +12,28 @@ function Consumer() {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Get Batch ID from QR URL
+  // =====================================================
+  // GET BATCH ID FROM QR URL
+  // =====================================================
+
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
+
     const qrBatchId = params.get("batchId");
 
     if (qrBatchId) {
       setBatchId(qrBatchId);
       setSearchId(qrBatchId);
+
       getBatch(qrBatchId);
     }
   }, []);
 
-  // Get batch from backend
+
+  // =====================================================
+  // GET BATCH FROM DEPLOYED BACKEND
+  // =====================================================
+
   const getBatch = async (id) => {
     if (!id) {
       setMessage(t.fillRequired);
@@ -36,7 +46,7 @@ function Consumer() {
       setBatch(null);
 
       const response = await fetch(
-        `http://localhost:5000/api/batches/${id}`
+        `${API_URL}/api/batches/${id}`
       );
 
       const data = await response.json();
@@ -45,19 +55,31 @@ function Consumer() {
         setBatch(data.batch);
         setBatchId(data.batch.batchId);
       } else {
-        setMessage(data.message || t.batchNotFound);
+        setMessage(
+          data.message || t.batchNotFound
+        );
       }
+
     } catch (error) {
-      console.error(error);
+
+      console.error("Backend Error:", error);
 
       setMessage(t.backendError);
+
     } finally {
+
       setLoading(false);
+
     }
   };
 
-  // Manual search
+
+  // =====================================================
+  // MANUAL SEARCH
+  // =====================================================
+
   const handleSearch = () => {
+
     const id = searchId.trim();
 
     if (!id) {
@@ -66,27 +88,39 @@ function Consumer() {
     }
 
     setBatchId(id);
+
     getBatch(id);
   };
 
-  // Format date
+
+  // =====================================================
+  // FORMAT DATE
+  // =====================================================
+
   const formatDate = (date) => {
+
     if (!date) {
       return t.notRecorded;
     }
 
-    return new Date(date).toLocaleDateString("en-IN", {
-      day: "2-digit",
-      month: "short",
-      year: "numeric",
-    });
+    return new Date(date).toLocaleDateString(
+      "en-IN",
+      {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      }
+    );
   };
 
+
   return (
+
     <div className="consumer-page">
 
+
       {/* =====================================================
-          HERO
+          HERO SECTION
       ===================================================== */}
 
       <section className="consumer-hero">
@@ -114,6 +148,7 @@ function Consumer() {
       </section>
 
 
+
       {/* =====================================================
           SEARCH SECTION
       ===================================================== */}
@@ -130,16 +165,20 @@ function Consumer() {
             {t.enterBatchToView}
           </p>
 
+
           <div className="search-box">
 
             <input
               type="text"
-              placeholder={t.batchIdPlaceholderConsumer}
+              placeholder={
+                t.batchIdPlaceholderConsumer
+              }
               value={searchId}
               onChange={(e) =>
                 setSearchId(e.target.value)
               }
             />
+
 
             <button onClick={handleSearch}>
               🔍 {t.searchBatch}
@@ -152,26 +191,37 @@ function Consumer() {
       </section>
 
 
+
       {/* =====================================================
-          LOADING
+          LOADING MESSAGE
       ===================================================== */}
 
       {loading && (
+
         <div className="consumer-message">
+
           {t.loadingBatch}
+
         </div>
+
       )}
+
 
 
       {/* =====================================================
-          ERROR
+          ERROR MESSAGE
       ===================================================== */}
 
       {message && !loading && (
+
         <div className="consumer-error">
+
           ❌ {message}
+
         </div>
+
       )}
+
 
 
       {/* =====================================================
@@ -190,7 +240,9 @@ function Consumer() {
           <div className="product-header">
 
 
-            {/* QR CARD */}
+            {/* =================================================
+                QR CARD
+            ================================================= */}
 
             <div className="qr-card">
 
@@ -198,15 +250,18 @@ function Consumer() {
                 📷 {t.scanQrCode}
               </h3>
 
+
               <div className="qr-code-box">
 
                 <QRCodeCanvas
                   value={`${window.location.origin}/consumer?batchId=${batch.batchId}`}
                   size={180}
                   level="H"
+                  includeMargin={true}
                 />
 
               </div>
+
 
               <p>
                 {t.scanToTrack}
@@ -215,30 +270,50 @@ function Consumer() {
             </div>
 
 
-            {/* PRODUCT INFO */}
+
+            {/* =================================================
+                PRODUCT INFORMATION
+            ================================================= */}
 
             <div className="product-info">
 
               <div className="verified-badge">
+
                 ✓ {t.verifiedProduct}
+
               </div>
 
+
               <h1>
-                {batch.crop || t.agriculturalProduce}
+
+                {batch.crop ||
+                  t.agriculturalProduce}
+
               </h1>
 
+
               <p className="batch-number">
+
                 {t.batchId}:{" "}
-                <strong>{batch.batchId}</strong>
+
+                <strong>
+                  {batch.batchId}
+                </strong>
+
               </p>
 
+
               <div className="grade-badge">
-                {batch.qualityGrade || t.qualityNotRecorded}
+
+                {batch.qualityGrade ||
+                  t.qualityNotRecorded}
+
               </div>
 
             </div>
 
           </div>
+
 
 
           {/* =================================================
@@ -251,6 +326,7 @@ function Consumer() {
               🌾 {t.productDetails}
             </h2>
 
+
             <div className="details-grid">
 
 
@@ -258,7 +334,9 @@ function Consumer() {
 
               <div className="detail-item">
 
-                <span>🌱</span>
+                <span>
+                  🌱
+                </span>
 
                 <div>
 
@@ -275,11 +353,14 @@ function Consumer() {
               </div>
 
 
+
               {/* QUANTITY */}
 
               <div className="detail-item">
 
-                <span>⚖️</span>
+                <span>
+                  ⚖️
+                </span>
 
                 <div>
 
@@ -288,8 +369,11 @@ function Consumer() {
                   </small>
 
                   <strong>
+
                     {batch.quantity}{" "}
+
                     {batch.unit || "KG"}
+
                   </strong>
 
                 </div>
@@ -297,11 +381,14 @@ function Consumer() {
               </div>
 
 
+
               {/* FARM LOCATION */}
 
               <div className="detail-item">
 
-                <span>📍</span>
+                <span>
+                  📍
+                </span>
 
                 <div>
 
@@ -310,8 +397,10 @@ function Consumer() {
                   </small>
 
                   <strong>
+
                     {batch.farmLocation ||
                       t.notRecorded}
+
                   </strong>
 
                 </div>
@@ -319,11 +408,14 @@ function Consumer() {
               </div>
 
 
+
               {/* HARVEST DATE */}
 
               <div className="detail-item">
 
-                <span>📅</span>
+                <span>
+                  📅
+                </span>
 
                 <div>
 
@@ -332,9 +424,11 @@ function Consumer() {
                   </small>
 
                   <strong>
+
                     {formatDate(
                       batch.harvestDate
                     )}
+
                   </strong>
 
                 </div>
@@ -346,11 +440,13 @@ function Consumer() {
           </div>
 
 
+
           {/* =================================================
               PRODUCT JOURNEY
           ================================================= */}
 
           <div className="journey-card">
+
 
             <div className="journey-heading">
 
@@ -363,6 +459,7 @@ function Consumer() {
               </p>
 
             </div>
+
 
 
             <div className="timeline">
@@ -378,6 +475,7 @@ function Consumer() {
                   👨‍🌾
                 </div>
 
+
                 <div className="timeline-content">
 
                   <div className="timeline-title">
@@ -386,36 +484,54 @@ function Consumer() {
                       {t.farmer}
                     </h3>
 
+
                     <span className="verified">
+
                       ✓ {t.verified}
+
                     </span>
 
                   </div>
+
 
                   <p>
                     {t.produceHarvestedRegistered}
                   </p>
 
+
                   <span className="location">
+
                     📍{" "}
+
                     {batch.farmLocation ||
                       t.farmLocationNotRecorded}
+
                   </span>
 
+
                   <span className="date">
+
                     📅{" "}
+
                     {formatDate(
                       batch.harvestDate
                     )}
+
                   </span>
 
+
                   <span className="farmer-name">
-                    👨‍🌾 {batch.farmerName}
+
+                    👨‍🌾{" "}
+
+                    {batch.farmerName}
+
                   </span>
 
                 </div>
 
               </div>
+
 
 
               {/* =================================================
@@ -428,6 +544,7 @@ function Consumer() {
                   📦
                 </div>
 
+
                 <div className="timeline-content">
 
                   <div className="timeline-title">
@@ -436,11 +553,15 @@ function Consumer() {
                       {t.collectionCenter}
                     </h3>
 
+
                     <span className="verified">
+
                       ✓ {t.verified}
+
                     </span>
 
                   </div>
+
 
                   <p>
 
@@ -452,23 +573,34 @@ function Consumer() {
 
 
                   {batch.collectionCenter?.location && (
+
                     <span className="location">
+
                       📍{" "}
+
                       {batch.collectionCenter.location}
+
                     </span>
+
                   )}
 
 
                   {batch.collectionCenter?.quality && (
+
                     <span className="date">
+
                       🏅 {t.quality}:{" "}
+
                       {batch.collectionCenter.quality}
+
                     </span>
+
                   )}
 
                 </div>
 
               </div>
+
 
 
               {/* =================================================
@@ -481,6 +613,7 @@ function Consumer() {
                   🚚
                 </div>
 
+
                 <div className="timeline-content">
 
                   <div className="timeline-title">
@@ -489,11 +622,15 @@ function Consumer() {
                       {t.transportation}
                     </h3>
 
+
                     <span className="tracked">
+
                       ✓ {t.tracked}
+
                     </span>
 
                   </div>
+
 
                   <p>
 
@@ -510,13 +647,16 @@ function Consumer() {
                       <span className="location">
 
                         📍{" "}
-                        {batch.transport.source}{" "}
-                        →{" "}
+
+                        {batch.transport.source}
+
+                        {" → "}
+
                         {batch.transport.destination}
 
                       </span>
 
-                  )}
+                    )}
 
 
                   {batch.transport?.vehicleNumber && (
@@ -524,6 +664,7 @@ function Consumer() {
                     <span className="date">
 
                       🚛 {t.vehicle}:{" "}
+
                       {batch.transport.vehicleNumber}
 
                     </span>
@@ -533,6 +674,7 @@ function Consumer() {
                 </div>
 
               </div>
+
 
 
               {/* =================================================
@@ -545,6 +687,7 @@ function Consumer() {
                   🏭
                 </div>
 
+
                 <div className="timeline-content">
 
                   <div className="timeline-title">
@@ -553,11 +696,15 @@ function Consumer() {
                       {t.warehouse}
                     </h3>
 
+
                     <span className="verified">
+
                       ✓ {t.verified}
+
                     </span>
 
                   </div>
+
 
                   <p>
 
@@ -573,6 +720,7 @@ function Consumer() {
                     <span className="location">
 
                       📍{" "}
+
                       {batch.warehouse.location}
 
                     </span>
@@ -588,18 +736,23 @@ function Consumer() {
                     <span className="date">
 
                       🌡️{" "}
+
                       {batch.warehouse?.temperature ??
                         "--"}
+
                       °C
 
                       {" | "}
 
                       💧{" "}
+
                       {batch.warehouse?.humidity ??
                         "--"}
+
                       %
 
                       {" "}
+
                       {t.humidity}
 
                     </span>
@@ -609,6 +762,7 @@ function Consumer() {
                 </div>
 
               </div>
+
 
 
               {/* =================================================
@@ -621,6 +775,7 @@ function Consumer() {
                   🏪
                 </div>
 
+
                 <div className="timeline-content">
 
                   <div className="timeline-title">
@@ -629,11 +784,15 @@ function Consumer() {
                       {t.retailer}
                     </h3>
 
+
                     <span className="received">
+
                       ✓ {t.received}
+
                     </span>
 
                   </div>
+
 
                   <p>
 
@@ -649,6 +808,7 @@ function Consumer() {
                     <span className="location">
 
                       📍{" "}
+
                       {batch.retailer.location}
 
                     </span>
@@ -658,6 +818,7 @@ function Consumer() {
                 </div>
 
               </div>
+
 
 
               {/* =================================================
@@ -670,6 +831,7 @@ function Consumer() {
                   🛒
                 </div>
 
+
                 <div className="timeline-content">
 
                   <div className="timeline-title">
@@ -678,11 +840,15 @@ function Consumer() {
                       {t.you}
                     </h3>
 
+
                     <span className="traceable">
+
                       ✓ {t.traceable}
+
                     </span>
 
                   </div>
+
 
                   <p>
                     {t.productReachedConsumer}
@@ -697,6 +863,7 @@ function Consumer() {
           </div>
 
 
+
           {/* =================================================
               SUPPLY CHAIN VERIFIED
           ================================================= */}
@@ -707,11 +874,13 @@ function Consumer() {
               🔗
             </div>
 
+
             <div>
 
               <h2>
                 {t.supplyChainVerified}
               </h2>
+
 
               <p>
                 {t.productJourneyRecorded}
@@ -722,6 +891,7 @@ function Consumer() {
           </div>
 
         </section>
+
       )}
 
     </div>
